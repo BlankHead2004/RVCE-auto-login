@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Credentials</title>
+    <style>
+        /* Common styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* Default background color */
+            color: #333; /* Default text color */
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .input-field {
+            margin-bottom: 15px;
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #357ae8;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .slider-container {
+            margin-bottom: 15px;
+        }
+
+        .slider-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .slider-value {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+        }
+
+        .refresh-slider {
+            width: 100%;
+        }
+
+        .toggle-container {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-label {
+            margin-right: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 20px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(14px);
+        }
+
+        /* Dark mode styles */
+        .dark-mode body {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .dark-mode .container {
+            background-color: #444;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark-mode .input-field label {
+            color: #fff;
+        }
+
+        .dark-mode .input-field input {
+            border: 1px solid #666;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .dark-mode button {
+            background-color: rgb(39, 177, 53);
+        }
+
+        .dark-mode button:hover {
+            background-color: #076f1e;
+        }
+
+        .dark-mode .message {
+            color: #4caf50;
+        }
+
+        .dark-mode .error {
+            color: #f44336;
+        }
+
+        .dark-mode .slider-container .slider-label,
+        .dark-mode .toggle-label {
+            color: #fff;
+        }
+
+        .dark-mode .slider-container .slider {
+            background-color: #666;
+        }
+
+        .dark-mode input:checked + .slider {
+            background-color: rgb(39, 177, 53);
+        }
+
+        .dark-mode .slider-container input:checked + .slider:before {
+            transform: translateX(14px);
+            background-color: white;
+        }
+        .dark-mode h2{
+            color: rgb(39, 177, 53)
+        }
+        .dark-mode .slider-container{
+            color: white;
+        }
+
+
+        
+        body.dark-mode input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        
+        body.dark-mode input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8.4px;
+            cursor: pointer;
+            background: linear-gradient(to right, rgb(39, 177, 53) 0%, rgb(39, 177, 53) var(--slider-value), #666 var(--slider-value), #666 100%);
+            border-radius: 1.3px;
+            border: 0.2px solid #010101;
+        }
+        
+        body.dark-mode input[type="range"]::-webkit-slider-thumb {
+            box-shadow: 0px 0px 0px #000000;
+            border: 1px solid rgb(39, 177, 53);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -6px;
+        }
+        
+        body.dark-mode input[type="range"]:focus {
+            outline: none;
+        }
+        
+        body.dark-mode input[type="range"]:focus::-webkit-slider-runnable-track {
+            background: linear-gradient(to right, rgb(39, 177, 53) 0%, rgb(39, 177, 53) var(--slider-value), #666 var(--slider-value), #666 100%);
+        }
+
+
+
+    </style>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <h2>Set Login Credentials</h2>
+        <div class="input-field">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div class="input-field">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="slider-container">
+            <label class="slider-label" for="refreshInterval">Auto Refresh Interval:</label>
+            <input type="range" class="refresh-slider" id="refreshInterval" min="1" max="10" step="1">
+            <span class="slider-value" id="intervalValue">5</span> minutes
+        </div>
+        <div class="toggle-container">
+            <span class="toggle-label">Enable Auto Refresh:</span>
+            <label class="switch">
+                <input type="checkbox" id="refreshToggle" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <button id="save">Save</button>
+        <div id="message" class="message"></div>
+        <div>
+            <label class="toggle-label">Dark Mode:</label>
+            <label class="switch">
+                <input type="checkbox" id="darkModeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
